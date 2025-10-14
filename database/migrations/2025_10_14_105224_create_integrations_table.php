@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('integrations', function (Blueprint $table) {
             $table->id();
             $table->string('duree');
-
             $table->timestamps();
         });
     }
