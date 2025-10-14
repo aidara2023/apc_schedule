@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('comp_semestres', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('semestre_id');
-            $table->foreign('semestre_id')->references('id')->on('semestres')->onDelete('cascade');
-            $table->bigInteger('competence_id');
-            $table->foreign('competence_id')->references('id')->on('competences')->onDelete('cascade');
+           
+            $table->foreignId('semestre_id')->constrained('semestres')->onDelete('cascade');
+           
+            $table->foreignId('competence_id')->constrained('competences')->onDelete('cascade');
             $table->timestamps();
         });
     }

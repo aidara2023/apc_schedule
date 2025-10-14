@@ -11,12 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('element_competences', function (Blueprint $table) {
+        Schema::create('emplois', function (Blueprint $table) {
             $table->id();
-            $table->string('intitule');
-            $table->string('code');
-            $table->string('quota_horaire');                                  
-            $table->foreignId('competence_id')->constrained('competences')->onDelete('cascade');
+            $table->string('heure_debut');
+            $table->string('heure_fin');
+            $table->string('date_debut');
+            $table->string('date_fin');
+           
+            $table->foreignId('annee_id')->constrained('annees')->onDelete('cascade');
+          
+            
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('element_competences');
+        Schema::dropIfExists('emplois');
     }
 };
