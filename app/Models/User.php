@@ -2,31 +2,35 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable;
 
     /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
+     * Les attributs qui peuvent être assignés en masse.
      */
     protected $fillable = [
-        'name',
+        'nom',
+        'prenom',
         'email',
+        'telephone',
+        'date_naissance',
+        'lieu_naissance',
+        'photo',
+        'matricule',
+        'genre',
         'password',
+        'role_id',
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
+     * Les attributs à cacher lors de la sérialisation.
      */
     protected $hidden = [
         'password',
@@ -34,15 +38,26 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
+     * Les attributs à convertir en types natifs.
      */
-    protected function casts(): array
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'date_naissance' => 'date',
+    ];
+
+    /**
+     * 🔗 Relation : Un utilisateur appartient à un rôle.
+     */
+    public function role()
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        return $this->belongsTo(Role::class);
+    }
+
+    /**
+     * 🔗 Relation : Un utilisateur peut être un formateur (s’il est lié dans la table formateurs).
+     */
+    public function formateur()
+    {
+        return $this->hasOne(Formateur::class);
     }
 }

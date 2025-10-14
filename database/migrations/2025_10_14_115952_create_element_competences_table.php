@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('quota_horaire');                                  
             $table->foreignId('competence_id')->constrained('competences')->onDelete('cascade');
             $table->timestamps();
+            $table->foreignId('integration_id')->constrained('integrations')->onDelete('cascade'); // ✅ nouvelle relation
         });
     }
 
