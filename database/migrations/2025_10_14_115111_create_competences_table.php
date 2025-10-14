@@ -18,12 +18,12 @@ return new class extends Migration
             $table->bigInteger('numero_competence');
             $table->string('code');
            // $table->string('quota_horaire');
-            $table->bigInteger('formateur_id');
-            $table->foreign('formateur_id')->references('id')->on('users')->onDelete('cascade');
-            $table->bigInteger('metier_id');
-            $table->foreign('metier_id')->references('id')->on('metiers')->onDelete('cascade');
-            $table->bigInteger('salle_id');
-            $table->foreign('salle_id')->references('id')->on('salles')->onDelete('cascade');
+        
+           $table->foreignId('formateur_id')->constrained('formateurs')->onDelete('cascade');
+           
+            $table->foreignId('metier_id')->constrained('metiers')->onDelete('cascade');
+           
+            $table->foreignId('salle_id')->constrained('salles')->onDelete('cascade');
             $table->timestamps();
         });
     }

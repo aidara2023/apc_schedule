@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('comp_emploi', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('competence_id');            
-            $table->foreign('competence_id')->references('id')->on('competences')->onDelete('cascade');
-            $table->bigInteger('emploi_id');
-            $table->foreign('emploi_id')->references('id')->on('emplois')->onDelete('cascade');
+                      
+            $table->foreignId('competence_id')->constrained('competences')->onDelete('cascade');
+            
+            $table->foreignId('emploi_id')->constrained('emplois')->onDelete('cascade');
             $table->timestamps();
         });
     }
