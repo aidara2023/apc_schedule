@@ -22,6 +22,7 @@ use App\Http\Controllers\EmploiController;
 use App\Http\Controllers\AnneeController;
 use App\Http\Controllers\CompSemestreController;
 use App\Http\Controllers\CompEmploiController;
+use App\Http\Controllers\SpecialiteController;
 
 
 // 🔹 Routes de base
@@ -44,6 +45,7 @@ Route::apiResource('departements', DepartementController::class);
 // 🔹 Infrastructure
 Route::apiResource('batiments', BatimentController::class);
 Route::apiResource('salles', SalleController::class);
+Route::apiResource('specialites', SpecialiteController::class);
 
 // 🔹 Compétences et éléments
 Route::apiResource('semestres', SemestreController::class);
