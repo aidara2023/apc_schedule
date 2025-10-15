@@ -9,7 +9,7 @@ class TypeFormation extends Model
 {
     use HasFactory;
 
-    protected $table = 'type_formation'; // nom de la table
+    protected $table = 'type_formations'; // nom de la table
     protected $fillable = ['intitule'];
 
     // Relation avec Niveaux : un type de formation peut avoir plusieurs niveaux
