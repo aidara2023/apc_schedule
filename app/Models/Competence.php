@@ -54,5 +54,7 @@ class Competence extends Model
     return $this->belongsToMany(Emploi::class, 'competence_emploi')
                ;
 }
+
+
     
 }

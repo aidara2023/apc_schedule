@@ -14,9 +14,11 @@ class Semestre extends Model
     /**
      * 🔗 Un semestre peut avoir plusieurs compétences.
      */
+    
+
     public function competences()
-    {
-        return $this->belongsToMany(Competence::class, 'comp_semestres')
-                    ->withTimestamps();
-    }
+{
+    return $this->belongsToMany(Competence::class, 'comp_semestres');
+}
+
 }
