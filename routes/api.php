@@ -22,7 +22,15 @@ use App\Http\Controllers\EmploiController;
 use App\Http\Controllers\AnneeController;
 use App\Http\Controllers\CompSemestreController;
 use App\Http\Controllers\CompEmploiController;
+
 use App\Http\Controllers\SpecialiteController;
+
+use App\Http\Controllers\AuthController;
+
+Route::post('login', [AuthController::class, 'login']);
+Route::middleware('auth:api')->post('logout', [AuthController::class, 'logout']);
+Route::middleware('auth:api')->get('me', [AuthController::class, 'me']);
+
 
 
 // 🔹 Routes de base
