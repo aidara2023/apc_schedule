@@ -15,6 +15,6 @@ class TypeFormation extends Model
     // Relation avec Niveaux : un type de formation peut avoir plusieurs niveaux
     public function niveaux()
     {
-        return $this->hasMany(Niveau::class, 'type_formations_id');
+        return $this->hasMany(Niveau::class);
     }
 }

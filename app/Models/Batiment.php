@@ -17,4 +17,10 @@ class Batiment extends Model
     {
         return $this->hasMany(Departement::class);
     }
+
+    // Relation avec Salles : un bâtiment peut avoir plusieurs salles
+    public function salles()
+    {
+        return $this->hasMany(Salle::class);
+    }
 }

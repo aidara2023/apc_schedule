@@ -9,10 +9,10 @@ class Salle extends Model
 {
     use HasFactory;
 
-    protected $table = 'salles'; // nom de la table
+    protected $table = 'salles';
     protected $fillable = ['intitule', 'capacite', 'batiment_id'];
 
-    // Relation avec Batiment : une salle appartient à un bâtiment
+    
     public function batiment()
     {
         return $this->belongsTo(Batiment::class);
