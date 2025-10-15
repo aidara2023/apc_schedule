@@ -9,28 +9,25 @@ class Departement extends Model
 {
     use HasFactory;
 
-    protected $table = 'departements'; // nom de la table
-    protected $fillable = ['nom_departement', 'user_id', 'batiment_id', 'formateur_id'];
+    protected $fillable = [
+        'nom_departement',
+        'batiment_id',
+        'formateur_id', // chef du département
+    ];
 
-    // Relation avec User : un département est lié à un utilisateur
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    // Relation avec Batiment : un département appartient à un bâtiment
+    // Relation avec Batiment
     public function batiment()
     {
         return $this->belongsTo(Batiment::class);
     }
 
-    // Relation avec Formateur : un département est associé à un formateur
-    public function formateur()
+    // Relation avec Formateur (chef)
+    public function chef()
     {
-        return $this->belongsTo(Formateur::class);
+        return $this->belongsTo(Formateur::class, 'formateur_id');
     }
 
-    // Relation avec Metiers : un département peut avoir plusieurs métiers
+    // Relation avec Metiers
     public function metiers()
     {
         return $this->hasMany(Metier::class);
