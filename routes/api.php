@@ -23,6 +23,7 @@ use App\Http\Controllers\AnneeController;
 use App\Http\Controllers\CompSemestreController;
 use App\Http\Controllers\CompEmploiController;
 
+
 // 🔹 Routes de base
 Route::apiResource('users', UserController::class);
 Route::apiResource('roles', RoleController::class);
